@@ -34,7 +34,8 @@ pnds.df <- pnds_deflator(data_pnds=pnds.df, deflator.file=deflator.path)
 \donttest{
 # Downloading data
 pnds.df2 <- get_pnds(year=2023, section="Female", vars=c("J007","J009"),
-                       labels=TRUE, deflator=FALSE, design=FALSE, reload=TRUE, savedir=tempdir())
+                       labels=TRUE, deflator=FALSE, design=FALSE,
+                       reload=TRUE, curlopts=list(), savedir=tempdir())
 deflator.path2 <- pnds_example(path="deflatorexample.xls")
 pnds.df2 <- pnds_deflator(data_pnds=pnds.df2, deflator.file=deflator.path2)}
 }

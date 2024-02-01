@@ -14,7 +14,7 @@
 #' @export
 
 pnds_example <- function(path = NULL) {
-  message("The pnds_example function is under development and will be available soon in package PNDSIBGE.")
+  message("The pnds_example function is under development and will be available soon in package PNDSIBGE.\n")
   return(NULL)
   if (is.null(path)) {
     dir(system.file("extdata", package="PNDSIBGE"))

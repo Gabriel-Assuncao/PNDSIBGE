@@ -1,7 +1,7 @@
 # PNDSIBGE
 ## Downloading, Reading and Analyzing PNDS Microdata - Package in Development
 
-This R package provides tools for download, read, and analyze the PNDS household survey from Brazilian Institute of Geography and Statistics.
+This R package provides tools for download, read, and analyze the National Survey of Demographic and Health - PNDS from Brazilian Institute of Geography and Statistics - IBGE.
 
 ## Baixe, Leia e Analise os Microdados da PNDS - Pacote em Desenvolvimento
 

@@ -36,7 +36,8 @@ if (!is.null(pnds.svy)) survey::svymean(x=~J007, design=pnds.svy, na.rm=TRUE)}
 \donttest{
 # Downloading data
 pnds.df2 <- get_pnds(year=2023, section="Female", vars=c("J007","J009"),
-                       labels=TRUE, deflator=TRUE, design=FALSE, reload=TRUE, savedir=tempdir())
+                       labels=TRUE, deflator=TRUE, design=FALSE,
+                       reload=TRUE, curlopts=list(), savedir=tempdir())
 pnds.svy2 <- pnds_design(data_pnds=pnds.df2)
 # Calculating proportion of people diagnosed with chronic diseases
 if (!is.null(pnds.svy2)) survey::svymean(x=~J007, design=pnds.svy2, na.rm=TRUE)}

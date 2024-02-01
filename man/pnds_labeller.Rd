@@ -32,7 +32,8 @@ pnds.df <- pnds_labeller(data_pnds=pnds.df, dictionary.file=dictionary.path)
 \donttest{
 # Downloading data
 pnds.df2 <- get_pnds(year=2023, section="Female", vars=c("J007","J009"),
-                       labels=FALSE, deflator=FALSE, design=FALSE, reload=TRUE, savedir=tempdir())
+                       labels=FALSE, deflator=FALSE, design=FALSE,
+                       reload=TRUE, curlopts=list(), savedir=tempdir())
 dictionary.path2 <- pnds_example(path="dictionaryexample.xls")
 pnds.df2 <- pnds_labeller(data_pnds=pnds.df2, dictionary.file=dictionary.path2)}
 }

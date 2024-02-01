@@ -12,6 +12,7 @@ get_pnds(
   deflator = TRUE,
   design = TRUE,
   reload = TRUE,
+  curlopts = list(),
   savedir = tempdir()
 )
 }
@@ -28,7 +29,9 @@ get_pnds(
 
 \item{design}{Logical value. If \code{TRUE}, will return an object of class \code{survey.design} or \code{svyrep.design}. It is strongly recommended to keep this parameter as \code{TRUE} for further analysis. If \code{FALSE}, only the microdata will be returned.}
 
-\item{reload}{Logical value. If \code{TRUE}, will re-download the files even if they already exist in the save directory. If \code{FALSE}, will be checked if the files already exist in the save directory and the download will not be performed repeatedly.}
+\item{reload}{Logical value. If \code{TRUE}, will re-download the files even if they already exist in the save directory. If \code{FALSE}, will be checked if the files already exist in the save directory and the download will not be performed repeatedly, be careful with coinciding names of microdata files.}
+
+\item{curlopts}{A named list object identifying the curl options for the handle when using functions from \code{RCurl} package.}
 
 \item{savedir}{Directory to save the downloaded data. Default is to use a temporary directory.}
 }
@@ -44,11 +47,13 @@ For more information, visit the survey official website <\url{https://www.ibge.g
 \examples{
 \donttest{
 pnds.svy <- get_pnds(year=2023, section="Female", vars=c("J007","J009"),
-                       labels=TRUE, deflator=TRUE, design=TRUE, reload=TRUE, savedir=tempdir())
+                       labels=TRUE, deflator=TRUE, design=TRUE,
+                       reload=TRUE, curlopts=list(), savedir=tempdir())
 # Calculating proportion of people diagnosed with chronic diseases
 if (!is.null(pnds.svy)) survey::svymean(x=~J007, design=pnds.svy, na.rm=TRUE)
 pnds.svy2 <- get_pnds(year=2023, section="Male", vars=c("N001","N00101"),
-                       labels=TRUE, deflator=TRUE, design=TRUE, reload=TRUE, savedir=tempdir())
+                       labels=TRUE, deflator=TRUE, design=TRUE,
+                       reload=TRUE, curlopts=list(), savedir=tempdir())
 # Calculating proportion of people's self-rated health
 if (!is.null(pnds.svy2)) survey::svymean(x=~N001, design=pnds.svy2, na.rm=TRUE)}
 }

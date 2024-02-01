@@ -20,13 +20,14 @@
 #' \donttest{
 #' # Downloading data
 #' pnds.df2 <- get_pnds(year=2023, section="Female", vars=c("J007","J009"),
-#'                        labels=TRUE, deflator=FALSE, design=FALSE, reload=TRUE, savedir=tempdir())
+#'                        labels=TRUE, deflator=FALSE, design=FALSE,
+#'                        reload=TRUE, curlopts=list(), savedir=tempdir())
 #' deflator.path2 <- pnds_example(path="deflatorexample.xls")
 #' pnds.df2 <- pnds_deflator(data_pnds=pnds.df2, deflator.file=deflator.path2)}
 #' @export
 
 pnds_deflator <- function(data_pnds, deflator.file) {
-  message("The pnds_deflator function is under development and will be available soon in package PNDSIBGE.")
+  message("The pnds_deflator function is under development and will be available soon in package PNDSIBGE.\n")
   return(NULL)
   if (sum(class(data_pnds) == "tbl_df") > 0) {
     if (!(FALSE %in% (c("V0020", "V0001") %in% names(data_pnds)))) {
@@ -47,11 +48,11 @@ pnds_deflator <- function(data_pnds, deflator.file) {
       data_pnds <- tibble::as_tibble(data_pnds)
     }
     else {
-      message("Merge variables required for adding deflator variables are missing.")
+      message("Merge variables required for adding deflator variables are missing.\n")
     }
   }
   else {
-    message("The microdata object is not of the tibble class or sample design was already defined for microdata, so adding deflator variables is not possible.")
+    message("The microdata object is not of the tibble class or sample design was already defined for microdata, so adding deflator variables is not possible.\n")
   }
   return(data_pnds)
 }

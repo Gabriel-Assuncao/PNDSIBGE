@@ -16,7 +16,7 @@
 #' @export
 
 read_pnds <- function(microdata, input_txt, vars = NULL) {
-  message("The read_pnds function is under development and will be available soon in package PNDSIBGE.")
+  message("The read_pnds function is under development and will be available soon in package PNDSIBGE.\n")
   return(NULL)
   X1 = X2 = X3 = start = end = NULL
   input <- suppressWarnings(suppressMessages({readr::read_table(input_txt, col_names=FALSE) %>% subset(substr(X1, 1, 1) == "@") %>%

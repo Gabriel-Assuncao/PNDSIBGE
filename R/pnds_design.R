@@ -23,14 +23,15 @@
 #' \donttest{
 #' # Downloading data
 #' pnds.df2 <- get_pnds(year=2023, section="Female", vars=c("J007","J009"),
-#'                        labels=TRUE, deflator=TRUE, design=FALSE, reload=TRUE, savedir=tempdir())
+#'                        labels=TRUE, deflator=TRUE, design=FALSE,
+#'                        reload=TRUE, curlopts=list(), savedir=tempdir())
 #' pnds.svy2 <- pnds_design(data_pnds=pnds.df2)
 #' # Calculating proportion of people diagnosed with chronic diseases
 #' if (!is.null(pnds.svy2)) survey::svymean(x=~J007, design=pnds.svy2, na.rm=TRUE)}
 #' @export
 
 pnds_design <- function(data_pnds) {
-  message("The pnds_design function is under development and will be available soon in package PNDSIBGE.")
+  message("The pnds_design function is under development and will be available soon in package PNDSIBGE.\n")
   return(NULL)
   if (sum(class(data_pnds) == "tbl_df") > 0) {
     if (!(FALSE %in% (c("UPA_PNDS", "ID_DOMICILIO", "V0024", "V0028", "V00281", "V00282", "V00283") %in% names(data_pnds))) |
@@ -51,12 +52,12 @@ pnds_design <- function(data_pnds) {
       }
     }
     else {
-      message("Weight variables required for sample design are missing.")
+      message("Weight variables required for sample design are missing.\n")
       data_posterior <- data_pnds
     }
   }
   else {
-    message("The microdata object is not of the tibble class or sample design was already defined for microdata, so applying another design is not possible.")
+    message("The microdata object is not of the tibble class or sample design was already defined for microdata, so applying another design is not possible.\n")
     data_posterior <- data_pnds
   }
   return(data_posterior)

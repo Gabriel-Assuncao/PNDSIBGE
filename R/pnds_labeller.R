@@ -18,13 +18,14 @@
 #' \donttest{
 #' # Downloading data
 #' pnds.df2 <- get_pnds(year=2023, section="Female", vars=c("J007","J009"),
-#'                        labels=FALSE, deflator=FALSE, design=FALSE, reload=TRUE, savedir=tempdir())
+#'                        labels=FALSE, deflator=FALSE, design=FALSE,
+#'                        reload=TRUE, curlopts=list(), savedir=tempdir())
 #' dictionary.path2 <- pnds_example(path="dictionaryexample.xls")
 #' pnds.df2 <- pnds_labeller(data_pnds=pnds.df2, dictionary.file=dictionary.path2)}
 #' @export
 
 pnds_labeller <- function(data_pnds, dictionary.file) {
-  message("The pnds_labeller function is under development and will be available soon in package PNDSIBGE.")
+  message("The pnds_labeller function is under development and will be available soon in package PNDSIBGE.\n")
   return(NULL)
   if (sum(class(data_pnds) == "tbl_df") > 0) {
     dictionary <- suppressMessages(readxl::read_excel(dictionary.file))
@@ -92,7 +93,7 @@ pnds_labeller <- function(data_pnds, dictionary.file) {
     }
   }
   else {
-    message("The microdata object is not of the tibble class or sample design was already defined for microdata, so labeling categorical variables is not possible.")
+    message("The microdata object is not of the tibble class or sample design was already defined for microdata, so labeling categorical variables is not possible.\n")
   }
   return(data_pnds)
 }
